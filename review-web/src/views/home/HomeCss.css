@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: black;
+    /* Cor de fundo preta para o corpo */
+    color: white;
+    /* Cor do texto padrão */
+}
+.header-top{
+    position: flex;
+    width: 100%;
+    height: 120px;
+    background-color: rgb(22, 22, 22);
+    
+}
+.logo {
+    width: 190px;
+}
