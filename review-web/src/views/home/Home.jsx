@@ -44,7 +44,7 @@ export default function Home() {
                         <Grid.Row>
                             <Grid.Column>
                                 
-                                <Image className="logo" src='/reviewlogo.png'/>
+                                <Image className="logo" src='/logoreview.png'/>
                                 
                             </Grid.Column>
                             
