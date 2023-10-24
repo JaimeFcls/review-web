@@ -12,7 +12,7 @@ function Rotas() {
         <>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="form-usuario" element={<FormUsuario />} />              
+                <Route path="cadastro" element={<FormUsuario />} />              
             </Routes>
         </>
     )

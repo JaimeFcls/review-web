@@ -1,170 +1,135 @@
-import axios from "axios";
 import React, { useState } from "react";
 import InputMask from 'react-input-mask';
 import { Link } from "react-router-dom";
 import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
-import MenuSistema from '../../MenuSistema';
+import axios from 'axios';
+import styled from 'styled-components'; // Importe a biblioteca Styled-components
 
+const CadastroContainer = styled.div`
+   
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('./curtain010.jpg') no-repeat center;
+    background-size: 100%;s
+`;
 
+const Wrapper = styled.div`
+    width: 420px;
+    background: transparent;
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+`;
+
+const Img = styled.img`
+    width: 100%;
+`;
+
+const H1 = styled.h1`
+    font-size: 36px;
+    text-align: center;
+    color: #fff;
+`;
+
+const InputBox = styled.div`
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+`;
+
+const Input = styled.input`
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 20px 45px 20px 20px;
+
+    &::placeholder {
+        color: #ffffff;
+    }
+`;
+
+const Btn = styled.button`
+    width: 100%;
+    height: 45px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 15px;
+    color: #333;
+    font-weight: 700;
+`;
+
+const Registrar = styled.div`
+    font-size: 14.5px;
+    text-align: center;
+    margin: 20px 0 15px;
+`;
+
+const RegistrarLink = styled.a`
+    color: #fff;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+`;
 export default function FormUsuario() {
     const [nome, setNome] = useState();
     const [email, setEmail] = useState();
-    const [dataNascimento, setDataNascimento] = useState();
-    const [foneCelular, setFoneCelular] = useState();
-    const [sexo, setSexo] = useState();
     const [senha, setSenha] = useState();
 
     function salvar() {
-
         let usuarioRequest = {
             nome: nome,
             senha: senha,
             email: email,
-            dataNascimento: dataNascimento,
-            foneCelular: foneCelular,
-            sexo: sexo,
-
-        }
+        };
 
         axios.post("http://localhost:8082/api/usuario", usuarioRequest)
             .then((response) => {
-                console.log('Cliente cadastrado com sucesso.')
+                console.log('Cliente cadastrado com sucesso.');
             })
             .catch((error) => {
-                console.log('Erro ao incluir o um cliente.')
-            })
+                console.log('Erro ao incluir o um cliente.');
+            });
     }
 
-
     return (
-
-        <div>
-            <MenuSistema />
-            <div style={{ marginTop: '3%' }}>
-
-                <Container textAlign='justified' >
-
-                    <h2> <span style={{ color: 'darkgray' }}> Usuario &nbsp;<Icon name='angle double right' size="small" /> </span> Cadastro </h2>
-
-                    <Divider />
-
-                    <div style={{ marginTop: '4%' }}>
-
-                        <Form>
-
-                            <Form.Group widths='equal'>
-
-                                <Form.Input
-                                    required
-                                    fluid
-                                    label='Nome'
-                                    maxLength="100"
-                                    value={nome}
-                                    onChange={e => setNome(e.target.value)}
-                                />
-                                <Form.Input
-                                    required
-                                    fluid
-                                    label='Sexo'
-
-                                    value={sexo}
-                                    onChange={e => setSexo(e.target.value)}
-                                />
-
-                                <Form.Input
-                                    required
-                                    fluid
-                                    label='Email'>
-                                    <InputMask
-                                        required
-
-                                        value={email}
-                                        onChange={e => setEmail(e.target.value)}
-                                    />
-                                </Form.Input>
-
-                            </Form.Group>
-
-                            <Form.Group>
-
-                                <Form.Input
-                                    fluid
-                                    label='Fone Celular'
-                                    width={6}>
-                                    <InputMask
-                                        mask="(99) 9999.9999"
-                                        value={foneCelular}
-                                        onChange={e => setFoneCelular(e.target.value)}
-                                    />
-                                </Form.Input>
-
-                                <Form.Input
-                                    fluid
-                                    label='Senha'
-                                    width={6}>
-                                    <InputMask
-                                        mask="(99) 9999.9999"
-                                        value={senha}
-                                        onChange={e => setSenha(e.target.value)}
-                                    />
-                                </Form.Input>
-
-                                <Form.Input
-                                    fluid
-                                    label='Data Nascimento'
-                                    width={6}
-                                >
-                                    <InputMask
-                                        mask="99/99/9999"
-
-                                        placeholder="Ex: 20/03/1985"
-                                        value={dataNascimento}
-                                        onChange={e => setDataNascimento(e.target.value)}
-                                    />
-                                </Form.Input>
-
-                            </Form.Group>
-
-                        </Form>
-
-                        <div style={{ marginTop: '4%' }}>
-
-                            <Button
-                                type="button"
-                                inverted
-                                circular
-                                icon
-                                labelPosition='left'
-                                color='orange'
-                                
-                            >
-                                <Icon name='reply' />
-                                <Link to={'/'}>Voltar</Link>
-
-                            </Button>
-
-                            <Button
-                                inverted
-                                circular
-                                icon
-                                labelPosition='left'
-                                color='blue'
-                                floated='right'
-                                onClick={() => salvar()}
-                            >
-                                <Icon name='save' />
-                                Salvar
-                            </Button>
-
-
-                        </div>
-
-                    </div>
-
-                </Container>
-            </div>
-        </div>
-
+        <CadastroContainer>
+            <Wrapper>
+                <Img src="/logoreviewbranca.png" alt="Logo" />
+                <H1>Login</H1>
+                <InputBox>
+                    <Input
+                        type="text"
+                        placeholder="Email"
+                        required
+                    />
+                </InputBox>
+                <InputBox>
+                    <Input
+                        type="text"
+                        placeholder="Senha"
+                        required
+                    />
+                </InputBox>
+                <Btn onClick={salvar}>Login</Btn>
+                <Registrar>
+                    <p>Não tem uma conta ? <RegistrarLink href="#">Cadastrar-se</RegistrarLink></p>
+                </Registrar>
+            </Wrapper>
+        </CadastroContainer>
     );
-
 }

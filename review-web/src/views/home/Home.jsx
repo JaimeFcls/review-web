@@ -1,7 +1,37 @@
 import React, { useState, useEffect } from "react";
 import { Container, Grid, Image, Button } from 'semantic-ui-react';
 import axios from 'axios';
-import "./HomeCss.css";
+import styled from 'styled-components';
+
+const InicialContainer = styled.div`
+    background: black;
+    min-height: 100vh;
+`;
+
+const HeaderTop = styled.header`
+    padding: 20px 0;
+    background-color: black;
+`;
+
+const Logo = styled(Image)`
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin: 0 auto;
+`;
+
+const MainContainer = styled(Container)`
+    padding-top: 4%;
+    color: white;
+`;
+
+const FilmesPopulares = styled.h2`
+    color: white;
+`;
+
+const SeriesPopulares = styled.h2`
+    color: white;
+`;
 
 export default function Home() {
     const [movies, setMovies] = useState([]);
@@ -37,28 +67,12 @@ export default function Home() {
     }, []);
 
     return (
-        <div>
-            <header className="header-top" >
-                <Container>
-                    <Grid columns={4} divided>
-                        <Grid.Row>
-                            <Grid.Column>
-                                
-                                <Image className="logo" src='/logoreview.png'/>
-                                
-                            </Grid.Column>
-                            
-                            <Grid.Column>
-                                
-                            </Grid.Column>
-                        </Grid.Row>
-                    </Grid>
-                    
-                </Container>
-                
-            </header>
-            <Container style={{ marginTop: '4%' }}>
-                <h2>Filmes Populares</h2>
+        <InicialContainer>
+            <HeaderTop>
+                <Logo src='/logoreview.png' />
+            </HeaderTop>
+            <MainContainer>
+                <FilmesPopulares>Filmes Populares</FilmesPopulares>
                 <Grid columns={4}>
                     {movies.map((movie) => (
                         <Grid.Column key={movie.id}>
@@ -67,7 +81,7 @@ export default function Home() {
                         </Grid.Column>
                     ))}
                 </Grid>
-                <h2>Séries Populares</h2>
+                <SeriesPopulares>Séries Populares</SeriesPopulares>
                 <Grid columns={4}>
                     {series.map((serie) => (
                         <Grid.Column key={serie.id}>
@@ -76,7 +90,7 @@ export default function Home() {
                         </Grid.Column>
                     ))}
                 </Grid>
-            </Container>
-        </div>
+            </MainContainer>
+        </InicialContainer>
     )
 }
