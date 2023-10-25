@@ -75,13 +75,15 @@ const Registrar = styled.div`
     font-size: 14.5px;
     text-align: center;
     margin: 20px 0 15px;
+    color: #FF0000;
 `;
 
 const RegistrarLink = styled.a`
-    color: #fff;
+    color:white;
     text-decoration: none;
 
     &:hover {
+        color: white;
         text-decoration: underline;
     }
 `;
@@ -109,7 +111,9 @@ export default function FormUsuario() {
     return (
         <CadastroContainer>
             <Wrapper>
-                <Img src="/logoreviewbranca.png" alt="Logo" />
+                <a href="/">
+                    <Img src="/logoreviewbranca.png" alt="Logo" />
+                </a>
                 <H1>Login</H1>
                 <InputBox>
                     <Input
@@ -126,8 +130,12 @@ export default function FormUsuario() {
                     />
                 </InputBox>
                 <Btn onClick={salvar}>Login</Btn>
+
                 <Registrar>
-                    <p>Não tem uma conta ? <RegistrarLink href="#">Cadastrar-se</RegistrarLink></p>
+                    
+                    
+
+                        <RegistrarLink href="#">Não tem uma Conta ? Cadastre-se</RegistrarLink>
                 </Registrar>
             </Wrapper>
         </CadastroContainer>

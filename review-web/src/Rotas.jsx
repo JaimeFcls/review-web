@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 //import FormEntregador from './views/entregador/FormEntregador';
 import Home from './views/home/Home';
 import FormUsuario from './views/usuario/FormUsuario';
+import FormUsuarioCadastro from './views/usuario/FormUsuarioCadastro';
 //import FormProduto from './views/produto/FormProduto';
 
 function Rotas() {
@@ -12,7 +13,8 @@ function Rotas() {
         <>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="cadastro" element={<FormUsuario />} />              
+                <Route path="login" element={<FormUsuario />} /> 
+                <Route path="cadastro" element={<FormUsuarioCadastro />} />              
             </Routes>
         </>
     )
