@@ -1,8 +1,5 @@
-import React, { useState } from "react";
-import InputMask from 'react-input-mask';
-import { Link } from "react-router-dom";
-import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
 import axios from 'axios';
+import React, { useState } from "react";
 import styled from 'styled-components'; // Importe a biblioteca Styled-components
 
 const CadastroContainer = styled.div`
@@ -17,7 +14,7 @@ const CadastroContainer = styled.div`
 
 const Wrapper = styled.div`
     width: 420px;
-    background: transparent;
+    
     color: #fff;
     border-radius: 10px;
     padding: 30px 40px;
