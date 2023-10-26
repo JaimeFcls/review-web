@@ -14,7 +14,7 @@ const CadastroContainer = styled.div`
 
 const Wrapper = styled.div`
     width: 420px;
-    
+    background: transparent;
     color: #fff;
     border-radius: 10px;
     padding: 30px 40px;
